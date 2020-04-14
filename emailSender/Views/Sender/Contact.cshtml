@@ -1,0 +1,52 @@
+﻿
+@model emailSender.Models.EmailFormModel
+
+
+    <div class="container">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <h4>Send your comments.</h4>
+            <hr />
+
+            //Correo
+            <div class="form-group">
+                @Html.LabelFor(m => m.email, new { @class = "col-md-2 control-label" })
+
+                <div class="col-md-10">
+
+                    @if (ViewBag.UserList != null)
+                    {
+                        @Html.DropDownListFor(m => m.id, ViewBag.UserList as SelectList, "Selecciona un destino", new { @class = "form-control" })
+                    }
+                </div>
+            </div>
+            //Mensaje
+            <div class="form-group layout">
+                @Html.LabelFor(m => m.Message, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(m => m.Message, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Message)
+                </div>
+            </div>
+            //Enviar mensaje
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" class="btn btn-default" value="Send" />
+                </div>
+            </div>
+            <style>
+                .layout {
+                    display: flex;
+                    color: black;
+                    padding: 5px 5px 5px 5px;
+                }
+            </style>
+
+
+        }
+
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }
+    </div>

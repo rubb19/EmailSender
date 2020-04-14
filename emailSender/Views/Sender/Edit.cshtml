@@ -1,0 +1,28 @@
+﻿@model emailSender.Models.info
+@using (Html.BeginForm())
+{
+    <div class="container">
+        <div class="form-group">
+            <label>Nombre:</label>
+            @Html.TextBoxFor(x => x.nombre, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label>Apellido Paterno:</label>
+            @Html.TextBoxFor(x => x.a_paterno, new { @class = "form-control" })
+
+        </div>
+        <div class="form-group">
+            <label>Apellido Materno:</label>
+            @Html.TextBoxFor(x => x.a_materno, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label>email:</label>
+            @Html.TextBoxFor(x => x.email, new { @class = "form-control" })
+
+        </div>
+        <div class="button">
+            <button>Submit</button>
+        </div>
+
+    </div>
+}
